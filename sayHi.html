@@ -1,0 +1,9 @@
+<div>Hello from the world of ajax</div>
+<script type="text/javascript">
+    function highlightWindow(){
+        var win = Ext.getCmp('myWindow');
+        var winBody = win.body;
+        winBody.highlight("0000ff", { attr: 'background-color', duration: 2 });
+    }
+    highlightWindow.defer(1000);
+</script>
