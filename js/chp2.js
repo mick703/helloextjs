@@ -20,7 +20,8 @@ var myForm = new Ext.form.FormPanel(
             border: true,
             items: [
                 {boxLabel: 'Male', inputValue: 1, name: 'segments[]'},
-                {boxLabel: 'Female',inputValue: 2, name: 'segments[]'}
+                {boxLabel: 'Female',inputValue: 2, name: 'segments[]'},
+                {boxLabel: 'Kids',inputValue: 3, name: 'segments[]'}
             ],
             column:1,
             width: 250
@@ -44,6 +45,13 @@ Ext.onReady(function(){
 //        }
 //    });
 //    myDiv1.createChild('<div>second childed inserted</div>', myDiv1.dom.childNodes[1]);
-    myForm.getComponent('segments').setValue([1]);
+    myForm.getComponent('segments').setValue([true,false,true]);
+    var checkboxes = myForm.getComponent('segments').getValue();
+    console.log(checkboxes);
+    for(var i= 0;i<checkboxes.length;i++){
+        console.log('he');
+        console.log(checkboxes[i].getValue());
+    }
+
     myForm.render('form1');
 });
