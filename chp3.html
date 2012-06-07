@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css"
+          href="/js/extjs/resources/css/ext-all.css" />
+
+    <script type="text/javascript"
+            src="/js/jquery.min.js">
+    </script>
+    <script type="text/javascript" src="/js/extjs/adapter/jquery/ext-jquery-adapter-debug.js"></script>
+    <script type="text/javascript" src="/js/extjs/adapter/ext/ext-base.js"></script>
+
+    <script type="text/javascript" src="/js/extjs/ext-all-debug.js"></script>
+    <script type="text/javascript">
+        Ext.BLANK_IMAGE_URL = "/js/extjs/resources/images/default/s.gif";
+    </script>
+    <script type="text/javascript">
+//        var observable = new Ext.util.Observable();
+//        observable.addEvents({'sayhi': true, 'saybye': true, 'greeting': true});
+//        observable.on('sayhi', function(){console.log('hi, extjs. i will conquer you. ')});
+//        observable.on('saybye', function(){console.log('bye extjs.')});
+//        observable.fireEvent('sayhi');
+//        observable.on('greeting', function(firstName, lastName){
+//            console.log('Welcome ' + firstName + ' ' + lastName);
+//        });
+//
+//        observable.fireEvent('greeting', 'Ming', 'Yan');
+//
+        var panel1 = {
+            html: 'panel 1',
+            id: 'panel1',
+            frame: true,
+            height: 100
+        };
+
+        var panel2 = {
+            html: 'panel 2',
+            id: 'panel2',
+            frame: true,
+            height: 100
+        };
+
+        var myWindow = new Ext.Window({
+            id: 'myWindow',
+            height: 400,
+            width: 400,
+            items: [
+                panel1,
+                panel2
+            ]
+        });
+        var myWindow2 = new Ext.Window({
+            id: 'myWindow2',
+            title: 'my window 2',
+            html: 'hello from window2',
+            height: 400,
+            width: 400
+        });
+        var panel2Comp = myWindow.getComponent('panel2');
+        panel2Comp.addEvents('click');
+        panel2Comp.addListener('click', function(){
+            alert('click event !');
+            this.getContainer().remove(this,false);
+            myWindow2.add(this);
+            myWindow2.show();
+            myWindow2.doLayout();
+        });
+
+
+
+
+        Ext.onReady(function(){
+            myWindow.show();
+            Ext.getCmp('myWindow').add({
+                title: 'appended panel',
+                id: 'addedpanel',
+                html: 'hello i am late'
+            });
+            Ext.getCmp('myWindow').doLayout();
+
+//            Ext.get('myRef').on('click', function(eventObj, elRef){
+//
+//                eventObj.stopEvent();//at the beginning
+//                console.log('myRef click handler, source '  + elRef.id);
+//            });
+//
+//            Ext.get('div1').on('click', function(eventObj, elRef){
+//                console.log('div1 click handler, source '  + elRef.id);
+//            });
+//            Ext.get('div1').on('contextmenu', function(eventObj, elRef){
+//                eventObj.stopEvent();
+//                console.log('div1 contextmenu event handler, source element id: ' + elRef.id);
+//                if (!this.ctxMenu) {
+//                    this.ctxMenu = new Ext.menu.Menu({
+//                        items: [{
+//                            text: 'menu item 1'
+//                        },{
+//                            text: 'menu item 2'
+//                        },{
+//                            text: 'menu item 3'
+//                        }]
+//                    });
+//
+//                }
+//                this.ctxMenu.show(elRef);
+//            });
+
+        });
+
+
+
+    </script>
+    <style type="text/css">
+        #div1 {
+            border : 1px solid #AAAAAA;
+            width : 200px;
+            height : 35px;
+            cursor : pointer;
+            padding : 2px 2px 2px 2px;
+            margin : 2px 2px 2px 2px;
+        }
+    </style>
+    <title></title>
+</head>
+<body>
+<h1>ext js chp2</h1>
+
+<div id='div1' class='myDiv'>
+<a id="myRef" href="#">Click here!</a>
+</div>
+
+</body>
+</html>

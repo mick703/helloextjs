@@ -30,7 +30,7 @@ var myForm = new Ext.form.FormPanel(
 
 Ext.onReady(function(){
 //    var myDiv1 = Ext.get('div1');
-//    myDiv1.setHeight(200);
+//    myDiv1.setHeight(20
 //    myDiv1.setSize(350,350,{duration: 1, easing:'bounceOut'});
 //    myDiv1.createChild('child from a string');
 //    myDiv1.createChild('<div>element form an element</div>');
@@ -54,4 +54,52 @@ Ext.onReady(function(){
     }
 
     myForm.render('form1');
+
+    var myTpl = new Ext.Template("<div>Hello, {0}</div>");
+    myTpl.append(document.body, ['Marjan']);
+
+    var complextemplate = new Ext.Template(
+        '<div style="background-color: {color}; margin: 10;">',
+        '<b> Name :</b> {name}<br />',
+        '<b> Age :</b> {age}<br />',
+        '<b> DOB :</b> {dob}<br />',
+        '</div>'
+     );
+    complextemplate.compile();
+    complextemplate.append(document.body,{
+        color : "#E9E9FF",
+        name : 'John Smith',
+        age
+            : 20,
+        dob
+            : '10/20/89'
+    });
+
+    //xtemplate
+    var tplData = [{
+        color : "#FFE9E9",
+        name : 'Naomi White',
+        age : 25,
+        dob  : '03/17/84',
+        cars : ['Jetta', 'Pilot', 'S2000']
+    },{
+        color : "#E9E9FF",
+        name : 'John Smith',
+        age : 20,
+        dob : '10/20/89',
+        cars : ['Civic', 'Accord', 'Pilot']
+    }];
+    var xtpl1 = new Ext.XTemplate(
+        '<tpl for=".">',
+        '<div style="background-color: {color}; margin: 10;">',
+        '<b> Name :</b> {name}<br />',
+        '<b> Age :</b> {age}<br />',
+        '<b> DOB :</b> {dob}<br />',
+        '</div>',
+        '</tpl>'
+    );
+    xtpl1.compile();
+    xtpl1.append(document.body, tplData);
+
+
 });
